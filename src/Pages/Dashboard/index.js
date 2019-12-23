@@ -1,4 +1,5 @@
 import React, { useState} from 'react';
+import {Box, Grid, Container} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
@@ -8,37 +9,46 @@ import Typography from '@material-ui/core/Typography';
 import Drawer from '../../Component/Drawer'
 import TopBar from '../../Component/TopBar'
 
+
 const useStyles = makeStyles(theme => ({
-    root: {
-      display: 'flex',
-    },
-    toolbar: {
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
-      padding: theme.spacing(0, 1),
-      ...theme.mixins.toolbar,
-    },
-    content: {
-      flexGrow: 1,
-      padding: theme.spacing(3),
-    },
-  }));
+  toolbar: {
+    ...theme.mixins.toolbar,
+  },
+}));
+
 
 const Dashboard = () => {
     const classes = useStyles();
     const [open, setOpen] = useState(true);
     const toggleDrawer = (state) => setOpen(state || !open);
 
+    const drawerSM = open ? 5 : 2
+    const dashboardSM = open ? 7 : 10
+    const drawerMD = open ? 3 : 1
+    const dashboardMD = open ? 9 : 11
+    const drawerLG = open ? 2 : 1
+    const dashboardLG = open ? 10 : 11
+
+
     return (
         <>
-         <div className={classes.root}>
          <CssBaseline />
             <TopBar toggleDrawer={toggleDrawer} open={open}/>
-            <Drawer toggleDrawer={toggleDrawer} open={open}/>
-            <main className={classes.content}>
-                <div className={classes.toolbar} />
-                <Typography paragraph>
+            <div className={classes.toolbar} />
+            <Grid container>
+            <Grid 
+              sm={drawerSM} 
+              md={drawerMD} 
+              lg={drawerLG} 
+            >
+              <Drawer toggleDrawer={toggleDrawer} open={open}/>
+            </Grid>
+            <Grid item
+              sm={dashboardSM}
+              md={dashboardMD}
+              lg={dashboardLG}
+            >
+                <Typography paragraph >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
                 ut labore et dolore magna aliqua. Rhoncus dolor purus non enim praesent elementum
                 facilisis leo vel. Risus at ultrices mi tempus imperdiet. Semper risus in hendrerit
@@ -61,8 +71,8 @@ const Dashboard = () => {
                 nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
                 accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
                 </Typography>
-        </main>
-        </div>
+              </Grid>
+        </Grid>
     </>
     )
 };

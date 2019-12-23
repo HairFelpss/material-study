@@ -5,14 +5,13 @@ import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import drawerBgImage from '../../Images/bg.jpg';
-
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   appBar: {
+    backgroundColor: 'transparent',
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -20,7 +19,6 @@ const useStyles = makeStyles(theme => ({
     }),
   },
   appBarShift: {
-    marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
@@ -32,6 +30,9 @@ const useStyles = makeStyles(theme => ({
   },
   hide: {
     display: 'none',
+  },
+  title: {
+    color: '#000',
   },
 }));
 
@@ -55,9 +56,9 @@ export default function TopBar({ open, toggleDrawer }) {
               [classes.hide]: open,
             })}
           >
-            <MenuIcon />
+            <ChevronRightIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h6" noWrap className={classes.title}>
             Mini variant drawer
           </Typography>
         </Toolbar>

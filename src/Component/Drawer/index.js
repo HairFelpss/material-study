@@ -101,7 +101,7 @@ export default function MiniDrawer({ toggleDrawer, open }) {
       >
         <div className={classes.toolbar}>
           <IconButton className={classes.whiteColor} onClick={() => toggleDrawer()}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+            <ChevronRightIcon />
           </IconButton>
         </div>
         <Divider className={classes.dividerColor}/>
