@@ -21,7 +21,6 @@ const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
   drawer: {
     width: drawerWidth,
-    flexShrink: 0,
     whiteSpace: 'nowrap',
   },
   drawerOpen: {
@@ -45,14 +44,15 @@ const useStyles = makeStyles(theme => ({
     },
   },
   toolbar: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
-    padding: theme.spacing(0, 1),
     ...theme.mixins.toolbar,
   },
+  icon: {
+    
+  },
+  hideIcon: {
+    display: 'none',
+  },
   content: {
-    flexGrow: 1,
     padding: theme.spacing(3),
   },
   whiteColor:{
@@ -98,8 +98,15 @@ export default function MiniDrawer({ toggleDrawer, open }) {
         }}
       >
         <div className={classes.toolbar}>
-          <IconButton className={classes.whiteColor} onClick={() => toggleDrawer()}>
-            <ChevronRightIcon />
+          <IconButton
+            className={classes.whiteColor}
+            edge="start"
+            onClick={() => toggleDrawer()}>
+              <ChevronRightIcon className={clsx({ 
+                [classes.icon]: open,
+                [classes.hideIcon]: !open,
+                })}
+              />
           </IconButton>
         </div>
         <Divider className={classes.dividerColor}/>
