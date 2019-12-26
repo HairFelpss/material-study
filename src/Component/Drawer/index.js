@@ -1,12 +1,11 @@
 import React from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PersonIcon from '@material-ui/icons/Person';
@@ -69,10 +68,9 @@ const useStyles = makeStyles(theme => ({
 
 export default function MiniDrawer({ toggleDrawer, open }) {
   const classes = useStyles();
-  const theme = useTheme();
 
   const firstListDrawerOptions = [
-    {id: 1, title: 'Felipe Alves', initial:<Avatar src="/static/images/avatar/3.jpg" />},
+    {id: 0, title: 'Felipe Alves', initial:<Avatar src="/static/images/avatar/3.jpg" />},
     {id: 1, title: 'My Profile', initial: 'MP'},
     {id: 2, title: 'Edit Profile', initial: 'EP'},
     {id: 3, title: 'Settings', initial: 'S'},

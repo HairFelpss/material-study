@@ -1,10 +1,8 @@
 import React, { useState} from 'react';
-import {Box, Grid, Container} from '@material-ui/core';
+import {Grid} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Typography from '@material-ui/core/Typography';
-
-// import { Container } from './styles';
 
 import Drawer from '../../Component/Drawer'
 import TopBar from '../../Component/TopBar'
@@ -22,8 +20,8 @@ const Dashboard = () => {
     const [open, setOpen] = useState(true);
     const toggleDrawer = (state) => setOpen(state || !open);
 
-    const drawerSM = open ? 5 : 2
-    const dashboardSM = open ? 7 : 10
+    const drawerSM = open ? 4 : 1
+    const dashboardSM = open ? 8 : 11
     const drawerMD = open ? 3 : 1
     const dashboardMD = open ? 9 : 11
     const drawerLG = open ? 2 : 1
@@ -32,11 +30,11 @@ const Dashboard = () => {
 
     return (
         <>
-         <CssBaseline />
-            <TopBar toggleDrawer={toggleDrawer} open={open}/>
-            <div className={classes.toolbar} />
-            <Grid container>
-            <Grid 
+          <CssBaseline />
+          <TopBar toggleDrawer={toggleDrawer} open={open}/>
+          <div className={classes.toolbar} />
+          <Grid container>
+            <Grid item
               sm={drawerSM} 
               md={drawerMD} 
               lg={drawerLG} 
@@ -71,8 +69,8 @@ const Dashboard = () => {
                 nibh sit. Ornare aenean euismod elementum nisi quis eleifend. Commodo viverra maecenas
                 accumsan lacus vel facilisis. Nulla posuere sollicitudin aliquam ultrices sagittis orci a.
                 </Typography>
-              </Grid>
-        </Grid>
+            </Grid>
+          </Grid>
     </>
     )
 };
