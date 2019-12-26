@@ -44,10 +44,14 @@ const useStyles = makeStyles(theme => ({
     },
   },
   toolbar: {
-    ...theme.mixins.toolbar,
+    display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'flex-end',
+      padding: theme.spacing(0, 1),
+      ...theme.mixins.toolbar,
   },
   icon: {
-    
+    marginHorizontal: theme.spacing(5),
   },
   hideIcon: {
     display: 'none',
