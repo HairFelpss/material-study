@@ -6,8 +6,9 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import logo from '../../Images/logo.png';
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -25,14 +26,17 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
-  menuButton: {
-    marginRight: 36,
+  whiteColor:{
+    color: '#fff',
   },
   hide: {
     display: 'none',
   },
   title: {
     color: '#000',
+  },
+  logoImg: {
+    width: 23,
   },
 }));
 
@@ -47,19 +51,22 @@ export default function TopBar({ open, toggleDrawer }) {
         })}
       >
         <Toolbar>
+          <h4
+            className={clsx({
+              [classes.hide]: open,
+            })}
+          >
+            <img src={logo} className={classes.logoImg} alt=''/>
+          </h4>
+          <Typography variant="h6" noWrap className={classes.title}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
             onClick={() => toggleDrawer()}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open,
-            })}
+            className={classes.btn}
           >
             <ChevronRightIcon />
           </IconButton>
-          <Typography variant="h6" noWrap className={classes.title}>
-            Mini variant drawer
           </Typography>
         </Toolbar>
       </AppBar>  

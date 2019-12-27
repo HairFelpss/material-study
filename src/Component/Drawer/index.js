@@ -5,8 +5,6 @@ import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
-import IconButton from '@material-ui/core/IconButton';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import PersonIcon from '@material-ui/icons/Person';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -15,8 +13,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import drawerBgImage from '../../Images/bg.jpg';
 
-
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -44,14 +41,15 @@ const useStyles = makeStyles(theme => ({
     },
   },
   toolbar: {
-    display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'flex-end',
       padding: theme.spacing(0, 1),
       ...theme.mixins.toolbar,
   },
+  transparentBg: {
+    backgroundColor: 'transparent',
+  },
   icon: {
     marginHorizontal: theme.spacing(5),
+    color: '#fff',
   },
   hideIcon: {
     display: 'none',
@@ -70,20 +68,20 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function MiniDrawer({ toggleDrawer, open }) {
+export default function MiniDrawer({ open }) {
   const classes = useStyles();
 
   const firstListDrawerOptions = [
-    {id: 0, title: 'Felipe Alves', initial:<Avatar src="/static/images/avatar/3.jpg" />},
-    {id: 1, title: 'My Profile', initial: 'MP'},
-    {id: 2, title: 'Edit Profile', initial: 'EP'},
-    {id: 3, title: 'Settings', initial: 'S'},
+    {id: 0, title: 'Felipe Alves', initial:<Avatar className={classes.transparentBg} src="/static/images/avatar/3.jpg" />},
+    {id: 1, title: 'My Profile', initial: <Avatar className={classes.transparentBg}>MP</Avatar>},
+    {id: 2, title: 'Edit Profile', initial: <Avatar className={classes.transparentBg}>EP</Avatar>},
+    {id: 3, title: 'Settings', initial: <Avatar className={classes.transparentBg}>S</Avatar>},
  ]
 
   const secondListDrawerOptions = [
-      {id: 0, title: 'Dashboard', image:<DashboardIcon />},
-      {id: 1, title: '7 Notifications', image:<NotificationsIcon />},
-      {id: 2, title: 'Profile', image:<PersonIcon />},
+      {id: 0, title: 'Dashboard', image:<Avatar className={classes.transparentBg}><DashboardIcon /> </Avatar>},
+      {id: 1, title: '7 Notifications', image:<Avatar className={classes.transparentBg}><NotificationsIcon /> </Avatar>},
+      {id: 2, title: 'Profile', image:<Avatar className={classes.transparentBg}><PersonIcon /> </Avatar>},
   ]
 
 
@@ -102,16 +100,13 @@ export default function MiniDrawer({ toggleDrawer, open }) {
         }}
       >
         <div className={classes.toolbar}>
-          <IconButton
-            className={classes.whiteColor}
-            edge="start"
-            onClick={() => toggleDrawer()}>
-              <ChevronRightIcon className={clsx({ 
-                [classes.icon]: open,
-                [classes.hideIcon]: !open,
-                })}
-              />
-          </IconButton>
+          <h4 className={clsx({ 
+            [classes.icon]: open,
+            [classes.hideIcon]: !open,
+            })}
+          >
+            SYSMAP 
+          </h4>
         </div>
         <Divider className={classes.dividerColor}/>
         <List>
